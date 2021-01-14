@@ -1,0 +1,18 @@
+class A
+{
+public:
+	explicit A(int n) :num(n){}
+private:
+	int num;
+};
+int main()
+{
+  A a(3);
+	//A a = 3;
+
+	system("pause");
+	return 0;
+}
+
+A a(3);是以函数的形式调用构造函数，会优先严格匹配，所以会调用A(int n)构造函数；但是
+A a = 3;是拷贝构造，调用的是拷贝构造函数A(const A&)；此时需要发生隐式类型转换int-->A，但我们的构造函数A(int n)被声明成了显示的，所以此隐式转换不成立，故而出错。
